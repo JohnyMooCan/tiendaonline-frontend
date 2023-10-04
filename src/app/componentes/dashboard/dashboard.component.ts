@@ -49,7 +49,11 @@ export class DashboardComponent {
    
     this.productoService.getProductos(busqueda).subscribe(data => {
       console.log(data);
-      this.productos = data;
+      this.productos = data; 
+
+      this.productos.map(item => {
+        item.cantidad =1;
+      })
       this.mostrarleyendacuantos = true;
       this.cadenacuantosobtenidos = "Resultados obtenidos: " + data.length
       this.mostrarSpinner = false;

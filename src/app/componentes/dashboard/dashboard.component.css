@@ -67,3 +67,7 @@
     padding-top: 10px;
     padding-left: 10px;
 }
+.input-cantidad-prod{
+    width: 50px;
+    max-width: 50px;
+}
