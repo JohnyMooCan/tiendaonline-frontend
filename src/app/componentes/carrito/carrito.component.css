@@ -1,0 +1,21 @@
+
+
+
+.mat-column-cantidad {
+  width: 100px;
+  max-width: 100px;
+}
+
+.input-cantidad {
+  width: 50px;
+  max-width: 50px;
+}
+
+.btn-pagar {
+  width: 150px;
+  max-width: 150px;
+  margin-top: 20px;
+
+}
+
+

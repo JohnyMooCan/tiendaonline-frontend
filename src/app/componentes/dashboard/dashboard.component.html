@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="container-fluid Container">
+  <div class="row">
+    <div class="col">
+
+    </div>
+    <div class="col-8">
+      <h4 class="title-h4">Productos</h4>
+      <div class="row">
+        <form class="d-flex" role="search" (ngSubmit)="onSubmit($event)">
+          <input class="form-control me-2" #busqueda id="busqueda" name="busqueda" type="search" placeholder="Buscar..."
+            aria-label="Search">
+          <button class="btn btn-outline-dark">Buscar</button>
+        </form>
+      </div>
+      <p *ngIf="mostrarleyendacuantos" class="text-body-secondary text-cuantos"> {{ cadenacuantosobtenidos }} </p>
+      <div class="container" *ngIf="!mostrarSpinner">
+      <article  class="product" *ngFor="let producto of productos">
+        <div class="product-header">
+          <h3 class="product-header-title">{{ producto.nombre }}</h3>
+
+        </div>
+        <div class="product-body">
+          <img [src]="producto.imagen" class="img-producto img-fluid" />
+          <p>{{ producto.descripcion }}</p>
+          <p>$ {{ producto.precio }}</p>
+        </div>
+        <div class="product-footer">
+          <div class="row">
+            <input matInput class="input-cantidad" placeholder="" min="1" type="number"
+            [(ngModel)]="producto.cantidad">
+          </div>
+          <div class="row">
+            <button class="btn btn-dark btn-lg" (click)="addCarrito($event,producto)">
+              Agregar al carrito
+            </button>
+          </div>
+         
+        </div>
+      </article>
+      
+    </div>
+    <app-spinner *ngIf="mostrarSpinner" ></app-spinner>
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+
+</div>

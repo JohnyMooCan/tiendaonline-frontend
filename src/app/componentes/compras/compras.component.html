@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+            <h4 class="title-h4">Mis compras</h4>
+        
+            <div class="row">
+                <form>
+                    <mat-form-field>
+                        <mat-label>Ordenar compras</mat-label>
+                        <mat-select [(ngModel)]="selectedValue" name="orden" (ngModelChange)="onChange($event)">
+                            <mat-option *ngFor="let orden of ordenamientos" [value]="orden.value">
+                                {{orden.caption}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </form>
+
+            </div>
+            <p *ngIf="mostrarvacio" class="text-body-secondary text-cuantos">Sin compras realizadas.</p>
+   
+            <div class="container" *ngIf="!mostrarSpinner">   
+                <mat-accordion class="example-headers-align" multi *ngFor="let compra of lstCompras">
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <p><b> Fecha de compra: </b> {{ compra.createdAt | date:'short' }}</p>
+                                <p style="padding-left: 15px;"><b>Total: </b> {{ compra.total | currency }} </p>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Producto</th>
+                                    <th></th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>Subtototal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let element of compra.DetalleCompras">
+                                    <td> {{element.nombre}} </td>
+                                    <td> <img [src]="element.imagen" height="30px" /> </td>
+                                    <td> {{element.cantidad}} </td>
+                                    <td> {{element.precio | currency }} </td>
+                                    <td> {{ element.precio * element.cantidad | currency }} </td>
+
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </mat-expansion-panel>
+
+                </mat-accordion>
+            </div>
+            <app-spinner *ngIf="mostrarSpinner" ></app-spinner>
+        </div>
+
+        <div class="col-md-1">
+
+        </div>
+    </div>
+</div>
