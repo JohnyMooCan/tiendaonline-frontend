@@ -28,17 +28,20 @@
                                 </div>
                             </div>
                             
-                            <app-calificacion [detalleProducto]="true" [calificacion]="2.5"></app-calificacion>
+                            <app-calificacion [detalleProducto]="true" [calificacion]="producto.calificacion"></app-calificacion>
                             
                             <div class="col-12">
                                 <div class="col">
-                                    <button class="btn btn-dark mt-2 btn-md w-50">Comprar ahora</button>
+                                    <button class="btn btn-dark mt-2 btn-md w-50" (click)="openDialog()">Comprar ahora</button>
                                 </div>
                                 <div class="col">
                                     <button class="btn btn-dark mt-2 btn-md w-50"
                                         (click)="addCarrito($event,producto)">Agregar al carrito</button>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-12">
+                            <p class="mt-2 text-align-left"> {{producto.descripcion}} </p>
                         </div>
                     
                 </div>

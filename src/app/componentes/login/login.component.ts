@@ -11,7 +11,9 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  usuario: string = "";
   nombre: string = "";
+  apellidos: string ="";
   password: string = "";
   mostrarSpinner: boolean = false;
   constructor(private toastr: ToastrService,
@@ -27,8 +29,11 @@ export class LoginComponent {
     }
 
     const usuario: Usuario = {
+      //LOS nodos usuario se envia invertidos para confundir intruzos
+      usuario: "",
+      password: this.password,
       nombre: this.nombre,
-      password: this.password
+      apellidos: "Jimenez"
     }
 
     this.mostrarSpinner = true;

@@ -62,7 +62,7 @@
                     <tr mat-footer-row *matFooterRowDef="['nombre','imagen','cantidad','precio','subtotal']"></tr>
                 </table>
 
-                <button class="btn btn-dark float-end btn-pagar " (click)="pagar()" type="button">Pagar</button>
+                <button class="btn btn-dark float-end btn-pagar " (click)="openDialog()" type="button">Pagar</button>
             </div>
             <app-spinner *ngIf="mostrarSpinner" ></app-spinner>
             <!--- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>

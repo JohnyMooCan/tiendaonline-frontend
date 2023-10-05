@@ -6,6 +6,8 @@ import { CarritoService } from 'src/app/servicios/carrito.service';
 import { ComprasService } from 'src/app/servicios/compras.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { DialogComponent } from 'src/app/utils/dialog/dialog.component';
+import { DialogData } from 'src/app/interfaces/dialogdata';
 
 
 @Component({
@@ -19,12 +21,14 @@ export class CarritoComponent {
   mostrarSpinner: boolean = false;
   mostrarvacio: boolean = true;
   lstCarrito: Carrito[] = [];
+  total: number= 0;
   Columns: string[] = ['nombre', 'imagen','cantidad', 'precio', 'subtotal','actions'];
   constructor(private carritoService: CarritoService, 
     private comprasService: ComprasService, 
     public dialog: MatDialog,
     private toastr: ToastrService,
-    private router: Router){
+    private router: Router,
+    ){
 
 
   }
@@ -94,25 +98,12 @@ export class CarritoComponent {
     return this.lstCarrito.map(t => t.precio * t.cantidad).reduce((acc, value) => acc + value, 0)
   }
   
-  pagar(){
-
-    if(!this.lstCarrito || this.lstCarrito.length <= 0){
-      this.toastr.warning("No hay productos en el carrito.", "Aviso");
-      return;
-    }
-
-    const total = this.calculatotal();
-
-    if(total === 0){
-      this.toastr.warning("Debe haber almenos un producto en el carrito.", "Aviso");
-      return;
-    }
-    
-    this.comprasService.addCompra(total,this.lstCarrito).subscribe({
-      next: (v) => {
+  async pagar(){
+    await this.comprasService.addCompra(this.total,this.lstCarrito).subscribe({
+      next: async (v) => {
         this.toastr.success("La compra se ha realizado exitosamente.","Compra satisfactoria");
 
-          this.carritoService.vaciarCarrito().subscribe(data => {
+         await this.carritoService.vaciarCarrito().subscribe(data => {
             this.router.navigate(['/compras'])
           });
        
@@ -129,5 +120,34 @@ export class CarritoComponent {
     });
 
   }
+  
+  openDialog(): void {
+    if(!this.lstCarrito || this.lstCarrito.length <= 0){
+      this.toastr.warning("No hay productos en el carrito.", "Aviso");
+      return;
+    }
 
+    this.total = this.calculatotal();
+
+    if(this.total === 0){
+      this.toastr.warning("Debe haber almenos un producto en el carrito.", "Aviso");
+      return;
+    }
+    const data: DialogData = {
+      titulo: '',
+      descripcion: '¿Desea realizar la compra?'
+    }
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: data,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if(result === "ok"){
+        this.pagar();
+      }
+    
+    });
+  }
+  
 }

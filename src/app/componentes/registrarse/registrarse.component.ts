@@ -13,8 +13,11 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 })
 export class RegistrarseComponent {
   usuario: string = "";
+  nombre: string = "";
+  apellidos: string ="";
   password: string = "";
   password2: string = "";
+  
   mostrarSpinner: boolean = false;
 
   constructor(private toastr: ToastrService,
@@ -33,7 +36,9 @@ export class RegistrarseComponent {
     }
 
     const usuario: Usuario = {
-      nombre: this.usuario,
+      usuario: this.usuario,
+      apellidos: "Vazquez Colli",
+      nombre: "Juanito",
       password: this.password
     }
 
@@ -41,7 +46,7 @@ export class RegistrarseComponent {
     this.usuarioService.registrarse(usuario).subscribe({
       next: (v) => {
         this.mostrarSpinner = false;
-        this.toastr.success("El usuario " + usuario.nombre + " se creo exitosamente.", "Usuario registrado");
+        this.toastr.success("El usuario " + usuario.usuario + " se creo exitosamente.", "Usuario registrado");
         this.router.navigate(['/login']);
 
       },
