@@ -25,6 +25,17 @@ export class ProductosService {
     return this.http.post<Producto[]>(this.fullPath,busqueda)
 
   }
+  getProducto(busqueda: any): Observable<Producto>{
+    //const token = localStorage.getItem("token");
+    //const headers = new HttpHeaders().set('Authorization','Bearer ' +token);
+    const value = {
+      busqueda: busqueda
+    } 
+    return this.http.post<Producto>(this.fullPath+'/detalle',value)
+
+  }
+
+
 
 
 }

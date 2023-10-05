@@ -15,6 +15,7 @@ import { MatIconModule} from '@angular/material/icon';
 import { MatExpansionModule} from '@angular/material/expansion';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
 //importamos el modulo para hacer la conexion
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { ToastrModule } from 'ngx-toastr';
@@ -67,7 +68,8 @@ import { DialogComponent } from './utils/dialog/dialog.component';
     MatIconModule,
     MatExpansionModule,
     NgbCollapseModule,
-    MatSelectModule
+    MatSelectModule,
+    MatGridListModule
     
     ],
     providers: [

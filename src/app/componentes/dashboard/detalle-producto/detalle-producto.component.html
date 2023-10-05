@@ -1,1 +1,48 @@
-<p>detalle-producto works!</p>
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="row d-flex  h-100">
+                <h4 class="title-h4">Información</h4>
+                <app-spinner *ngIf="mostrarSpinner" ></app-spinner>
+                <div class="card mat-elevation-z8" *ngIf="!mostrarSpinner">
+                    <div class="card-body d-flex">
+
+                    <div class="col-s-12 col-md-6 col-xs-12">
+                        <img [src]="producto.imagen" class="img-producto-detalle img-fluid" />
+                    </div>
+                    <div class="col-s-12 col-md-6 col-xs-12">
+
+                        <h2>{{ producto.nombre }}</h2>
+
+                        <h4 class="bold"> {{ producto.precio | currency }}</h4>
+                        <app-spinner *ngIf="mostrarSpinner" ></app-spinner>
+                        <div class="col-12">
+                            <div class="d-flex flex-row align-self-center">
+                                <div class="col-flex">
+                                    <p>Cantidad: </p>
+                                </div>
+                                <div class="col-flex">
+                                    <input class="input-cantidad-detalle" [(ngModel)]="producto.cantidad" placeholder=""
+                                        min="1" type="number">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="col">
+                                    <button class="btn btn-dark mt-2 btn-md w-50">Comprar ahora</button>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-dark mt-2 btn-md w-50"
+                                        (click)="addCarrito($event,producto)">Agregar al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>

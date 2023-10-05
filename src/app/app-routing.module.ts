@@ -6,12 +6,14 @@ import { DashboardComponent } from './componentes/dashboard/dashboard.component'
 import { AuthGuard } from './utils/auth.guard';
 import { CarritoComponent } from './componentes/carrito/carrito.component';
 import { ComprasComponent } from './componentes/compras/compras.component';
+import { DetalleProductoComponent } from './componentes/dashboard/detalle-producto/detalle-producto.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: 'login', component: LoginComponent},
   {path: 'registrarse', component: RegistrarseComponent},
   {path: 'tienda', component: DashboardComponent, canActivate: [AuthGuard]},
+  {path: 'tienda/:id', component: DetalleProductoComponent, canActivate: [AuthGuard]},
   {path: 'carrito', component: CarritoComponent, canActivate: [AuthGuard]},
   {path: 'compras', component: ComprasComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: 'login', pathMatch: 'full'}

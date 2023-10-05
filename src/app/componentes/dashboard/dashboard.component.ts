@@ -5,6 +5,7 @@ import { ProductosService } from 'src/app/servicios/productos.service';
 import { CarritoService } from 'src/app/servicios/carrito.service';
 import { ToastrService } from 'ngx-toastr';
 import { Carrito } from 'src/app/interfaces/carrito';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,7 +22,8 @@ export class DashboardComponent {
   cadenacuantosobtenidos: string = "";
   constructor(private productoService: ProductosService,
     private carritoService: CarritoService,
-    private toastr: ToastrService) {
+    private toastr: ToastrService,
+    private router: Router) {
 
   }
   ngAfterViewInit() {
@@ -68,10 +70,7 @@ export class DashboardComponent {
       
   }
   addCarrito(event: any,producto: Producto) {
-    console.log("VALOR EVENT")
-    
-    console.log(event);
-    console.log(producto);
+   
     const id: any = localStorage.getItem('value')
     const carrito: Carrito = {
       idUsuario: parseInt(id),
@@ -100,7 +99,8 @@ export class DashboardComponent {
   }
 
   verDetalle(producto: Producto){
-    this.toastr.success("Click");
+    
+    this.router.navigate(['/tienda',producto.idProducto])
   }
   addCompra(){
 
