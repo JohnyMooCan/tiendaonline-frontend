@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
+import { NgIf } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap'
 
 //Angular material
 import { MatTableModule } from '@angular/material/table';
@@ -13,13 +13,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule} from '@angular/material/icon';
 import { MatExpansionModule} from '@angular/material/expansion';
-import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatGridListModule} from '@angular/material/grid-list';
-//importamos el modulo para hacer la conexion
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
-import { ToastrModule } from 'ngx-toastr';
 
+//importamos el modulo para hacer la conexion
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './componentes/login/login.component';
@@ -33,6 +32,9 @@ import { CarritoComponent } from './componentes/carrito/carrito.component';
 import { DetalleProductoComponent } from './componentes/dashboard/detalle-producto/detalle-producto.component';
 import { ComprasComponent } from './componentes/compras/compras.component';
 import { DialogComponent } from './utils/dialog/dialog.component';
+import { CalificacionComponent } from './utils/calificacion/calificacion.component';
+
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { DialogComponent } from './utils/dialog/dialog.component';
     CarritoComponent,
     DetalleProductoComponent,
     ComprasComponent,
-    DialogComponent
+    DialogComponent,
+    CalificacionComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,9 @@ import { DialogComponent } from './utils/dialog/dialog.component';
     MatExpansionModule,
     NgbCollapseModule,
     MatSelectModule,
-    MatGridListModule
+    MatGridListModule,
+    NgbRatingModule,
+    NgIf
     
     ],
     providers: [

@@ -19,7 +19,8 @@ export class DetalleProductoComponent {
     descripcion: "",
     imagen: "",
     nombre: "",
-    precio: ""
+    precio: "",
+    calificacion: 0
   };
   constructor(private route: ActivatedRoute,
     private router: Router,

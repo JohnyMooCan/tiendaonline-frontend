@@ -1,0 +1,20 @@
+<div class="col-12">
+  <div [ngClass]="detalleProducto ? 'd-flex flex-row align-items-center' : ''">
+    <div class="col-md-flex col-s-12 col-xs-12">
+      <p class="p-calificacion"> {{ textoCalificacion }} </p>
+    </div>
+    <div class="col-md-flex col-s-12 col-xs-12">
+
+      <ng-template #t let-fill="fill">
+        <i  [ngClass]="detalleProducto ? 'bi-star-fill i-star-detalle' : 'bi-star-fill i-star'">
+          <i *ngIf="fill > 0"  [ngClass]="detalleProducto ? 'bi-star-fill filled i-star-detalle' : 'bi-star-fill filled i-star'" [style.width.%]="fill"></i>
+        </i>
+      </ng-template>
+
+      <ngb-rating [(rate)]="calificacion" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+      <!--- <ngb-rating [ngClass]="detalleProducto ? 'calificacion' : ''" [max]="5" [readonly]="true"  [(rate)]="calificacion">
+    </ngb-rating>
+  -->
+    </div>
+  </div>
+</div>

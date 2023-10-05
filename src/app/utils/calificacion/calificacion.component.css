@@ -1,0 +1,35 @@
+.i-star-detalle {
+  position: relative;
+  display: inline-block;
+  font-size: 1.9rem;
+  padding-right: 0.1rem;
+  color: #d3d3d3;
+}
+
+.i-star {
+  position: relative;
+  display: inline-block;
+  padding-right: 0.1rem;
+  color: #d3d3d3;
+}
+
+.filled {
+  color: #FFD600;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.p-calificacion{
+  margin: 0em !important;
+  margin-right: 5px !important;
+}
+.calificacion {
+
+    font-size: 1.9rem !important;
+
+}
+
+
+
