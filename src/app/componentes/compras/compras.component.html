@@ -1,13 +1,10 @@
 <app-navbar></app-navbar>
-<div class="container-fluid">
-
-    <div class="row">
-        <div class="col-md-1">
-
-        </div>
-        <div class="col-md-10">
-            <h4 class="title-h4">Mis compras</h4>
-        
+<div class="container">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-8 col-s-12 col-xs-12">
+            
+                <h4 class="title-h4">Mis compras</h4>
+           
             <div class="row">
                 <form>
                     <mat-form-field>
@@ -23,8 +20,8 @@
 
             </div>
             <p *ngIf="mostrarvacio" class="text-body-secondary text-cuantos">Sin compras realizadas.</p>
-   
-            <div class="container" *ngIf="!mostrarSpinner">   
+
+            <div class="col-12" *ngIf="!mostrarSpinner">
                 <mat-accordion class="mat-elevation-z8" multi *ngFor="let compra of lstCompras">
                     <mat-expansion-panel>
                         <mat-expansion-panel-header>
@@ -33,39 +30,34 @@
                                 <p style="padding-left: 15px;"><b>Total: </b> {{ compra.total | currency }} </p>
                             </mat-panel-title>
                         </mat-expansion-panel-header>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th></th>
+                                        <th>Cantidad</th>
+                                        <th>Precio</th>
+                                        <th>Subtototal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let element of compra.DetalleCompras">
+                                        <td> {{element.nombre}} </td>
+                                        <td> <img [src]="element.imagen" height="30px" /> </td>
+                                        <td> {{element.cantidad}} </td>
+                                        <td> {{element.precio | currency }} </td>
+                                        <td> {{ element.precio * element.cantidad | currency }} </td>
+                                    </tr>
+                                </tbody>
 
-                        <table class="table">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>Producto</th>
-                                    <th></th>
-                                    <th>Cantidad</th>
-                                    <th>Precio</th>
-                                    <th>Subtototal</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let element of compra.DetalleCompras">
-                                    <td> {{element.nombre}} </td>
-                                    <td> <img [src]="element.imagen" height="30px" /> </td>
-                                    <td> {{element.cantidad}} </td>
-                                    <td> {{element.precio | currency }} </td>
-                                    <td> {{ element.precio * element.cantidad | currency }} </td>
-
-                                </tr>
-                            </tbody>
-
-                        </table>
-
+                            </table>
+                        </div>
                     </mat-expansion-panel>
 
                 </mat-accordion>
             </div>
-            <app-spinner *ngIf="mostrarSpinner" ></app-spinner>
-        </div>
-
-        <div class="col-md-1">
-
+            <app-spinner *ngIf="mostrarSpinner"></app-spinner>
         </div>
     </div>
 </div>

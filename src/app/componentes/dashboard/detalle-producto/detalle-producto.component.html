@@ -1,54 +1,62 @@
 <app-navbar></app-navbar>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-            <div class="row d-flex h-100">
-                <h4 class="title-h4">Información</h4>
-                <app-spinner *ngIf="mostrarSpinner" ></app-spinner>
-                <div class="row mat-elevation-z8" *ngIf="!mostrarSpinner">
-                
-                    <div class="col-s-12 col-md-6 col-xs-12">
+<div class="container">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="row">
+            <h4 class="title-h4">Información del producto</h4>
+        </div>
+        <div class="row">
+            <app-spinner *ngIf="mostrarSpinner" ></app-spinner>
+            <div class="mat-elevation-z8" *ngIf="!mostrarSpinner">
+                <div class="row">
+                    <div class="col-md-6">
                         <img [src]="producto.imagen" class="img-producto-detalle img-fluid" />
                     </div>
-                    <div class="col-s-12 col-md-6 col-xs-12">
+                    <div class="col-md-6 ">
+                        <div class="col-12 aligm-center-media">
+                            <div class="col-12 ">
+                                <h2>{{ producto.nombre }}</h2>
+                                <h4 class="bold"> {{ producto.precio | currency }}</h4>
 
-                        <h2>{{ producto.nombre }}</h2>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex flex-row align-self-center">
+                                    <div class="col-flex">
+                                        <p>Cantidad: </p>
+                                    </div>
+                                    <div class="col-flex">
+                                        <input class="input-cantidad-detalle" [(ngModel)]="producto.cantidad"
+                                            placeholder="" min="1" type="number">
+                                    </div>
 
-                        <h4 class="bold"> {{ producto.precio | currency }}</h4>
-                        <app-spinner *ngIf="mostrarSpinner" ></app-spinner>
-                        <div class="col-12">
-                            <div class="d-flex flex-row align-self-center">
-                                <div class="col-flex">
-                                    <p>Cantidad: </p>
-                                </div>
-                                <div class="col-flex">
-                                    <input class="input-cantidad-detalle" [(ngModel)]="producto.cantidad" placeholder=""
-                                        min="1" type="number">
                                 </div>
                             </div>
-                            
-                            <app-calificacion [detalleProducto]="true" [calificacion]="producto.calificacion"></app-calificacion>
-                            
-                            <div class="col-12">
-                                <div class="col">
-                                    <button class="btn btn-dark mt-2 btn-md w-50" (click)="openDialog()">Comprar ahora</button>
+
+                            <app-calificacion [detalleProducto]="true"
+                                [calificacion]="producto.calificacion"></app-calificacion>
+
+                            <div class="col-12 ">
+                                <div class="" style="display: inline-block; vertical-align: top;">
+                                    <button class="btn btn-dark mt-2 btn-md" style=" margin: 5px;"
+                                        (click)="openDialog()">Comprar ahora</button>
                                 </div>
-                                <div class="col">
-                                    <button class="btn btn-dark mt-2 btn-md w-50"
+                                <div class="" style="display: inline-block; vertical-align: top;">
+                                    <button class="btn btn-dark mt-2 btn-md" style="margin: 5px;"
                                         (click)="addCarrito($event,producto)">Agregar al carrito</button>
                                 </div>
+
                             </div>
                         </div>
                         <div class="col-12">
                             <p class="mt-2 text-align-left"> {{producto.descripcion}} </p>
                         </div>
-                    
-                </div>
+                    </div>
+
                 </div>
             </div>
+
         </div>
-        <div class="col-2"></div>
+
     </div>
-    <app-dialog-sesion></app-dialog-sesion>
+
+
 </div>

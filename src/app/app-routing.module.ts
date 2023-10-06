@@ -9,7 +9,7 @@ import { ComprasComponent } from './componentes/compras/compras.component';
 import { DetalleProductoComponent } from './componentes/dashboard/detalle-producto/detalle-producto.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full' },
+  {path: '', redirectTo: 'tienda', pathMatch: 'full' },
   {path: 'login', component: LoginComponent},
   {path: 'registrarse', component: RegistrarseComponent},
   {path: 'tienda', component: DashboardComponent},

@@ -17,13 +17,56 @@ html, body {
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.fa-hover-red:hover {
-    color: red;
-    cursor: pointer;
-}
-
 .title-h4{
     padding-top: 30px;
     padding-bottom: 10px;
 }
+
+
+/*Informacion de apoyo para tenerlo a la mano
+/*Extra Small Devices (Phones)*/
+@media screen and (max-width: 767px) {
+    .resize-h100-xs {
+        padding-top: 10px;       
+        height: 100vh !important;
+    }
+
+    .aligm-center-media {
+        text-align: center !important;
+        align-items: center !important;
+        align-content: center !important;
+    }
+    .w-table-carrito-media {
+        width: 100% !important ;
+    }
+    
+}
+
+/*Small Devices (Tablets)*/
+@media (min-width: 768px) and (max-width: 991px) {
+    .w-table-carrito-media {
+        width: 100% !important ;
+    }
+}
+
+/*Medium Devices (Laptops)*/
+@media (min-width: 992px) and (max-width: 1199px) {
+    .w-table-carrito-media {
+        width: 80% !important ;
+    }
+}
+/*Medium Devices (Laptops)*/
+@media (min-width: 1200px){}
+
+/*Medium and Small Devices*/
+@media (min-width: 768px) and (max-width: 1199px){
+}
+
+/*Large and Medium Devices*/
+@media (max-width: 992px){
+    
+}
+
+/*Large, Medium, and Small Devices*/
+@media (max-width: 1200px){}
 
