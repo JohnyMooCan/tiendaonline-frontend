@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import OpenAI from "openai";
+import { ViewportScroller } from "@angular/common";
+import { Router } from "@angular/router";
+
 import { environment } from 'src/environments/environment';
+import OpenAI from "openai";
 
 @Component({
   selector: 'app-chat-gpt',
@@ -15,7 +18,7 @@ export class ChatGPTComponent {
   response: any;
   promptText = '';
 
-  constructor(){
+  constructor(private scroller: ViewportScroller, private router: Router){
 
   }
   
@@ -33,6 +36,11 @@ export class ChatGPTComponent {
     const urlImg: string = (person == 'ChatGPT') ? imgBot : imgYou;
     const chatToPush: any = { person: person, response: content, cssClass: cssClass, imgSr: urlImg };
     this.chatConversation.push(chatToPush);
+
+    const targetIndex = 'mensaje-' + String(this.chatConversation.length);
+    console.log(targetIndex);
+
+    this.router.navigate([], { fragment: targetIndex });
   }
 
 
@@ -49,28 +57,34 @@ export class ChatGPTComponent {
 
     const openai = new OpenAI({
       apiKey: environment.OPENAI_API_KEY,
-      dangerouslyAllowBrowser: true
+      dangerouslyAllowBrowser: true,
+      organization: "org-MWeRoQSGB5djT76Ny6IZMIAG"
     });
-
-    const chatCompletion = await openai.chat.completions.create({
-      messages: [{ role: "system", content: this.promptText,}],
-      model: "gpt-3.5-turbo",
+    const mensaje = this.promptText;
+    this.promptText = '';
+    const chatCompletion =  await openai.chat.completions.create({
+      messages: [{ 
+        role: "system",
+        content: mensaje
+        }],
+        model: "gpt-3.5-turbo",
     }).then(function (data) {
       //Do something with the data.
-      return data;
+      return data.choices[0].message.content;
       
     })
       .catch(function (err) {
         //The API returned an error
         console.log("Error Chat GPT")
         console.log(err)
+        return "Error al procesar, favor de intentar de nuevo o mas tarde.";
       });
       this.promptText = '';
       //console.log("Respuesta Char GPT")
       //console.log(chatCompletion);
       this.response = chatCompletion;
 
-      this.pushChatContent(this.response.choices[0].message.content, 'ChatGPT', 'justify-content-start');
+      this.pushChatContent(this.response, 'ChatGPT', 'justify-content-start');
 
   }
   closeChat(eliminar: boolean) {

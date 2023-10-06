@@ -7,6 +7,7 @@ import { AuthGuard } from './utils/auth.guard';
 import { CarritoComponent } from './componentes/carrito/carrito.component';
 import { ComprasComponent } from './componentes/compras/compras.component';
 import { DetalleProductoComponent } from './componentes/dashboard/detalle-producto/detalle-producto.component';
+import { PageNotFoundComponent } from './componentes/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'tienda', pathMatch: 'full' },
@@ -16,7 +17,7 @@ const routes: Routes = [
   {path: 'tienda/:id', component: DetalleProductoComponent},
   {path: 'carrito', component: CarritoComponent, canActivate: [AuthGuard]},
   {path: 'compras', component: ComprasComponent, canActivate: [AuthGuard]},
-  {path: '**', redirectTo: 'login', pathMatch: 'full'}
+  {path: '**', component: PageNotFoundComponent, pathMatch: 'full'}
 ];
 
 @NgModule({

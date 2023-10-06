@@ -37,6 +37,7 @@ import { CalificacionComponent } from './utils/calificacion/calificacion.compone
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { DialogSesionComponent } from './utils/dialog-sesion/dialog-sesion.component';
 import { ChatGPTComponent } from './componentes/chat-gpt/chat-gpt.component';
+import { PageNotFoundComponent } from './componentes/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ChatGPTComponent } from './componentes/chat-gpt/chat-gpt.component';
     DialogComponent,
     CalificacionComponent,
     DialogSesionComponent,
-    ChatGPTComponent
+    ChatGPTComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

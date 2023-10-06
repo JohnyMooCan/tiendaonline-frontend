@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="card-body scrollable" data-mdb-perfect-scrollbar="true">
-        <div *ngFor="let item of chatConversation" >
+        <div *ngFor="let item of chatConversation; index as i" id="{{ 'mensaje-'+i }}" >
           <div class="d-flex flex-row" [ngClass]="item.person == 'ChatGPT' ? 'justify-content-between' : 'justify-content-end' ">
             <p class="small mb-1"> {{item.person }} </p>
           </div>

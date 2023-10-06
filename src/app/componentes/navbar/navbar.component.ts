@@ -29,18 +29,21 @@ export class NavbarComponent {
 
   navegar(seccion: string) {
     this.sesioniniciada = this.sesionService.sesionIniciada();
-
     if (seccion) {
       switch (seccion) {
         case 'carrito':
-          this.irCarrito()
+          case 'compras':
+          case 'login':
+          case 'registrarse':
+          case 'tienda':
+            this.router.navigate([seccion]);
           break;
-        case 'compras':
-          this.irCompras()
-          break;
+        
         case 'cerrar':
           this.openDialog();
           break;
+          
+          
       }
     }
 
@@ -51,18 +54,10 @@ export class NavbarComponent {
 
     localStorage.removeItem("token");
     localStorage.removeItem("value");
-    this.router.navigate(['/login']);
+    this.router.navigate(['/tienda']);
 
   }
-  irCarrito() {
-    this.router.navigate(['/carrito'])
-  }
-  irTienda() {
-    this.router.navigate(['/tienda'])
-  }
-  irCompras() {
-    this.router.navigate(['/compras'])
-  }
+
   openDialog(): void {
     const data: DialogData = {
       titulo: '',
