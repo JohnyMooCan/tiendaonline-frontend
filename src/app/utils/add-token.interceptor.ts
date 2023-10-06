@@ -24,8 +24,12 @@ export class AddTokenInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if(error.status === 401){
-        //  this._errorService.msjError(error)
-        this.toastr.error(error.error.msg, "Error");
+        //  this._errorService.msjError(error).
+
+          this.toastr.error("Es necesario iniciar sesión para realizar esta acción", "Error");
+      
+          //this.toastr.error(error.error.msg, "Error");  
+        
           this.router.navigate(['/login'])
         }
         return throwError(() => error);

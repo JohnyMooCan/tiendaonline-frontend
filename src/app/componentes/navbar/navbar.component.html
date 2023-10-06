@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark  ">
   <a class="navbar-brand" style="cursor: pointer" (click)="irTienda()">Mi tienda online</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation"
+    (click)="isCollapsed = !isCollapsed">
     <span class="navbar-toggler-icon"></span>
   </button>
   <!-- Container wrapper -->
@@ -10,27 +12,31 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link text-white" style="cursor: pointer"  (click)="irTienda()" title="Ir a la tienda">Tienda<span class="sr-only">(current)</span></a>
+          <a class="nav-link text-white" style="cursor: pointer" (click)="irTienda()" title="Ir a la tienda">Tienda<span
+              class="sr-only">(current)</span></a>
         </li>
       </ul>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
+
       </ul>
 
       <!-- Icons -->
       <ul class="navbar-nav d-flex flex-row me-1">
-        <li class="nav-item "><a class="nav-link text-white"  style="cursor: pointer" title="Ir mis compras" (click)="irCompras()">Mis compras</a></li>
-        
+        <li class="nav-item "><a class="nav-link text-white" style="cursor: pointer" title="Ir mis compras"
+            (click)="navegar('compras')">Mis compras</a></li>
+
       </ul>
       <ul class="navbar-nav d-flex flex-row me-1">
         <li class="nav-item ">
-          <a class="nav-link text-white" title="Ir al carrito" (click)="irCarrito()"><i class="fas fa-shopping-cart"
-              style="cursor: pointer"></i></a>
+          <a class="nav-link text-white" title="Ir al carrito" (click)="navegar('carrito')"><i
+              class="fas fa-shopping-cart" style="cursor: pointer"></i></a>
         </li>
       </ul>
-      <button class="btn btn-outline-light" (click)="openDialog()" type="button">Cerrar sesión</button>
+      <button *ngIf="sesioniniciada" class="btn btn-outline-light" (click)="navegar('cerrar')" type="button">Cerrar
+        sesión</button>
     </div>
 
   </div>
 
 </nav>
+<app-chat-gpt></app-chat-gpt>

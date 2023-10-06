@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { SesionService } from '../servicios/sesion.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router) {
+  constructor(private sesionService: SesionService) {
 
   }
   canActivate(
@@ -16,7 +17,7 @@ export class AuthGuard implements CanActivate {
     //Obtenemos el token 
     const token = localStorage.getItem('token')
     if(token == undefined) {
-      this.router.navigate(['/login'])
+      this.sesionService.sinSesion()
       return false
     }
     

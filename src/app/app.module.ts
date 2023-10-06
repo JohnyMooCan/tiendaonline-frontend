@@ -35,6 +35,8 @@ import { DialogComponent } from './utils/dialog/dialog.component';
 import { CalificacionComponent } from './utils/calificacion/calificacion.component';
 
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { DialogSesionComponent } from './utils/dialog-sesion/dialog-sesion.component';
+import { ChatGPTComponent } from './componentes/chat-gpt/chat-gpt.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
     DetalleProductoComponent,
     ComprasComponent,
     DialogComponent,
-    CalificacionComponent
+    CalificacionComponent,
+    DialogSesionComponent,
+    ChatGPTComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,7 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     //DOCUMENTACION https://www.npmjs.com/package/ngx-toastr 
     ToastrModule.forRoot({
-      timeOut: 2000,
+      timeOut: 2500,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }), // ToastrModule added
