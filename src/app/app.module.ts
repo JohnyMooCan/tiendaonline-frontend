@@ -64,9 +64,11 @@ import { PageNotFoundComponent } from './componentes/page-not-found/page-not-fou
     BrowserAnimationsModule,
     //DOCUMENTACION https://www.npmjs.com/package/ngx-toastr 
     ToastrModule.forRoot({
-      timeOut: 2500,
+      timeOut: 3000,
       positionClass: 'toast-bottom-right',
+      closeButton: true,
       preventDuplicates: true,
+      progressBar: true
     }), // ToastrModule added
     MatTableModule,
     MatDialogModule,

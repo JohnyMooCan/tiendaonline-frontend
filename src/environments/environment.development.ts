@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
     apiUrl: 'http://localhost:3000/',
-    OPENAI_API_KEY : "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"
+    OPENAI_API_KEY : "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"
 };

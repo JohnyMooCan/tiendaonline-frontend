@@ -23,10 +23,18 @@ export class RegistrarseComponent {
   constructor(private toastr: ToastrService,
     private usuarioService: UsuarioService,
     private router: Router) { }
-  addUsuario() {
+  async addUsuario() {
+
 
     if (this.usuario == '' || this.password == '' || this.password2 == '') {
       this.toastr.error("Todos los campos son obligatorios.", "Error");
+      return;
+    }
+
+    const re = new RegExp('^(\\d).{8,}$');
+   
+    if(!re.test(this.password)){
+      this.toastr.warning("La contraseña debe contener mínimo 8 carácteres y un número.", "Aviso");
       return;
     }
 
@@ -43,7 +51,7 @@ export class RegistrarseComponent {
     }
 
     this.mostrarSpinner = true;
-    this.usuarioService.registrarse(usuario).subscribe({
+    (await this.usuarioService.registrarse(usuario)).subscribe({
       next: (v) => {
         this.mostrarSpinner = false;
         this.toastr.success("El usuario " + usuario.usuario + " se creo exitosamente.", "Usuario registrado");

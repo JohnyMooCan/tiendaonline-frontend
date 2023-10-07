@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark  ">
-  <a class="navbar-brand" style="cursor: pointer" title="Ir a la tienda" (click)="navegar('tienda')">Mi tienda
+  <a class="navbar-brand"  role="button" title="Ir a la tienda" (click)="navegar('tienda')">Mi tienda
     online</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation"
@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link text-white" style="cursor: pointer" (click)="navegar('tienda')"
+          <a class="nav-link text-white" role="button" (click)="navegar('tienda')"
             title="Ir a la tienda">Tienda<span class="sr-only">(current)</span></a>
         </li>
       </ul>
@@ -22,14 +22,14 @@
       </ul>
       <ng-template [ngIf]="sesioniniciada" [ngIfElse]="templatelogin">
         <ul class="navbar-nav d-flex flex-row me-1">
-          <li class="nav-item "><a class="nav-link text-white" style="cursor: pointer" title="Ir mis compras"
+          <li class="nav-item "><a class="nav-link text-white" role="button" title="Ir mis compras"
               (click)="navegar('compras')">Mis compras</a>
           </li>
           <ul class="navbar-nav d-flex flex-row me-1"></ul>
           <li class="nav-item ">
             <a class="nav-link text-white" title="Ir al carrito" (click)="navegar('carrito')"><i
                 class="fas fa-shopping-cart fa-md"
-                style="cursor: pointer"></i>
+                role="button"></i>
             </a>
           </li>
         </ul>
@@ -43,8 +43,8 @@
 
       <ng-template #templatelogin>
         <ul class="navbar-nav d-flex flex-row me-1">
-          <li class="nav-item "><a class="nav-link text-white" style="cursor: pointer" title="iniciar sesión"
-              (click)="navegar('login')">Login</a>
+          <li class="nav-item "><a class="nav-link text-white" role="button" title="iniciar sesión"
+              (click)="navegar('login')">Iniciar sesión</a>
           </li>
 
         </ul>

@@ -1,41 +1,43 @@
 <app-navbar></app-navbar>
 <div class="Container">
-  <div class="row d-flex justify-content-center align-items-center h-100">
+  <div class="row-flex d-flex justify-content-center align-items-center h-100">
     <div class="col-md-8 col-s-12 col-xs-12">
-      <h4 class="title-h4">Productos</h4>
-      <div class="row">
-        <form class="d-flex" role="search" (ngSubmit)="onSubmit($event)">
-          <input class="form-control me-2" title="Buscar productos"  #busqueda id="busqueda" name="busqueda" type="search" placeholder="Buscar..."
-            aria-label="Search">
-          <button class="btn btn-outline-dark">Buscar</button>
-        </form>
-      </div>
-      <p *ngIf="mostrarleyendacuantos" class="text-body-secondary text-cuantos"> {{ cadenacuantosobtenidos }} </p>
-      <div class="container" *ngIf="!mostrarSpinner">
-        <div class="row row-cols-3">
-          <div class="col" *ngFor="let producto of productos">
-            <article class="mb-3 product" (click)="verDetalle(producto)">
-              <div class="product-body text-center">
-                <img [src]="producto.imagen" class="img-producto img-fluid" />
-
-                <h5 class="fw-bold">{{ producto.nombre }}</h5>
-                <p class="fw-bold" style="margin-bottom: 5px !important;">{{ producto.precio | currency }}</p>
-              </div>
-              <div class="row text-center align-self-center align-items-center">
-                <app-calificacion [calificacion]="producto.calificacion"></app-calificacion>
-              </div>
-            </article>
-          </div>
-
+      <div class="col-12">
+        <h4 class="title-h4">Productos</h4>
+        <div class="row">
+          <form class="d-flex" role="search" (ngSubmit)="onSubmit($event)">
+            <input class="form-control me-2" #busqueda id="busqueda" name="busqueda" type="search"
+              placeholder="Buscar..." aria-label="Search">
+            <button class="btn btn-outline-dark" title="Buscar productos">Buscar</button>
+          </form>
         </div>
-        <app-spinner *ngIf="mostrarSpinner"></app-spinner>
-      </div>
+        <p class="text-body-secondary text-cuantos"> {{ cadenacuantosobtenidos }} </p>
+        <div class="container" *ngIf="!mostrarSpinner">
+          <div class="row row-cols-3">
+            <div class="col" *ngFor="let producto of productos">
+              <article class="mb-3 product" (click)="verDetalle(producto)">
+                <div class="product-body text-center">
+                  <img [src]="producto.imagen" class="img-producto img-fluid" />
 
+                  <h5 class="fw-bold">{{ producto.nombre }}</h5>
+                  <p class="fw-bold" style="margin-bottom: 5px !important;">{{ producto.precio | currency }}</p>
+                </div>
+                <div class="row text-center align-self-center align-items-center">
+                  <app-calificacion [calificacion]="producto.calificacion"></app-calificacion>
+                </div>
+              </article>
+            </div>
+
+          </div>
+          <app-spinner *ngIf="mostrarSpinner"></app-spinner>
+        </div>
+      </div>
     </div>
 
   </div>
+</div>
 
-  <!--<app-navbar></app-navbar>
+<!--<app-navbar></app-navbar>
 <div class="container-fluid Container">
   <div class="row">
     <div class="col">

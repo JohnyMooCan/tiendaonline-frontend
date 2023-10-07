@@ -97,6 +97,19 @@ export class CarritoComponent {
   calculatotal(){
     return this.lstCarrito.map(t => t.precio * t.cantidad).reduce((acc, value) => acc + value, 0)
   }
+  validaCantidad(): boolean{
+    let hayCero: boolean = false;
+    this.lstCarrito.forEach((product) => {
+
+        if(product.cantidad <= 0){
+          hayCero = true;
+      
+        }
+
+    })
+
+    return hayCero;
+  }
   
   async pagar(){
     await this.comprasService.addCompra(this.total,this.lstCarrito).subscribe({
@@ -130,9 +143,17 @@ export class CarritoComponent {
     this.total = this.calculatotal();
 
     if(this.total === 0){
-      this.toastr.warning("Debe haber almenos un producto en el carrito.", "Aviso");
+      this.toastr.warning("Debe existir almenos un producto en el carrito.", "Aviso");
       return;
     }
+
+    const hayCero = this.validaCantidad();
+    if(hayCero){
+      this.toastr.warning("La cantidad minima por producto debe ser 1.", "Aviso");
+    
+      return;
+    }
+
     const data: DialogData = {
       titulo: '',
       descripcion: '¿Desea realizar la compra?'

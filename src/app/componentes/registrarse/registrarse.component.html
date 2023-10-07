@@ -10,19 +10,25 @@
                             <p class="text-black-50">Por favor llene los campos</p>
                             <form class="form">
                                 <div class="form-outline mb-4">
+                                    <label>Usuario</label>
                                     <input type="text" [(ngModel)]="usuario" autocomplete="false" class="form-control"
                                         placeholder="Ingrese usuario">
-                                    <label>Usuario</label>
+                                  
                                 </div>
                                 <div class="form-outline mb-4">
-                                    <input type="password" [(ngModel)]="password" class="form-control"
-                                        placeholder="Ingrese contraseña">
                                     <label>Contraseña</label>
+                                    <input type="password" [(ngModel)]="password" class="form-control"
+                                    aria-describedby="mensajepassword" placeholder="Ingrese contraseña">
+                                   
+                                    <div id="mensajepassword" class="form-text">
+                                        La contraseña debe contener mínimo 8 caracteres y un número
+                                      </div>
                                 </div>
                                 <div class="form-outline mb-4">
+                                    <label>Repetir contraseña</label>
                                     <input type="password" [(ngModel)]="password2" class="form-control"
                                         placeholder="Ingrese la contraseña de nuevo">
-                                    <label>Repetir contraseña</label>
+                                  
                                 </div>
 
                                 <button class="btn btn-dark btn-lg px-5"

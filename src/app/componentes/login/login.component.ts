@@ -23,10 +23,13 @@ export class LoginComponent {
   }
 
   login() {
+   
     if (this.nombre == '' || this.password == '') {
       this.toastr.error("Todos los campos son obligatorios.", "Error");
       return;
     }
+
+   
 
     const usuario: Usuario = {
       //LOS nodos usuario se envia invertidos para confundir intruzos

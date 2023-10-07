@@ -11,9 +11,11 @@ import {DialogData} from '../../interfaces/dialogdata'
 export class DialogComponent {
   constructor(public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData){
+      this.data.titulo ="Aviso"
     
   }
   onNoClick(): void {
+    
     this.dialogRef.close();
   }
 

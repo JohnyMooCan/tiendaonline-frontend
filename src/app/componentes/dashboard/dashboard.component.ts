@@ -17,7 +17,7 @@ export class DashboardComponent {
   //@ViewChild('busqueda', {static: false}) busquedaElem!: ElementRef;
   mostrarSpinner: boolean = false;
   productos: Producto[] = [];
-  busqueda: string = "";
+  busquedaGeneral: string = "";
   mostrarleyendacuantos: boolean =false;
   cadenacuantosobtenidos: string = "";
   constructor(private productoService: ProductosService,
@@ -39,14 +39,14 @@ export class DashboardComponent {
   }
   onSubmit(event: any) {
     const busqueda = event.target.busqueda.value;
-    this.busqueda = busqueda;
+    this.busquedaGeneral = busqueda;
     this.getProductos();
  }
   getProductos() {
     this.mostrarSpinner = true;
     //Obtenemos los productos
-    const busqueda = (this.busqueda.length !== 0) ? {
-      busqueda : this.busqueda,
+    const busqueda = (this.busquedaGeneral.length !== 0) ? {
+      busqueda : this.busquedaGeneral
     } : undefined
    
     this.productoService.getProductos(busqueda).subscribe(data => {
@@ -57,7 +57,7 @@ export class DashboardComponent {
         item.cantidad =1;
       })
       this.mostrarleyendacuantos = true;
-      this.cadenacuantosobtenidos = "Resultados obtenidos: " + data.length
+      this.cadenacuantosobtenidos = "Resultados obtenidos: " + data.length + " con la busqueda " + this.busquedaGeneral 
       this.mostrarSpinner = false;
     })/*{
       next: (data) => {

@@ -1,8 +1,9 @@
-<h1 mat-dialog-title>{{data.titulo}}</h1>
+
+<h5  class="text-center bg-dark  p-2 text-white">{{data.titulo}}</h5>
 <div mat-dialog-content>
   <p class="text-black">{{data.descripcion}}</p>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="justify-content-end">
   <button  class="btn btn-outline-dark btn-sm btn-dialog" (click)="onNoClick()">No</button>
   <button  mat-dialog-close="ok" class="btn btn-outline-dark btn-sm btn-dialog">Sí</button>
 </div>

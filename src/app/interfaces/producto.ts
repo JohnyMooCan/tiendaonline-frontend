@@ -5,5 +5,5 @@ export interface Producto {
     precio: string,
     imagen: string,
     calificacion: number;
-    cantidad: number , //Esta variable su usa inicamente para obtener la cantidad a enviar al carrto
+    cantidad: number , //Esta variable su usa inicamente para obtener la cantidad a enviar al carrito
 }

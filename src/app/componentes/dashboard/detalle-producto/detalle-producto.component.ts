@@ -70,7 +70,12 @@ export class DetalleProductoComponent {
 
 
   }
-  addCarrito(event: any, producto: Producto) {
+  addCarrito(event: string, producto: Producto) {
+
+    if(producto.cantidad <= 0){
+      this.toastr.warning("La cantidad del producto debe ser minimo 1","Aviso");
+      return;
+    }
 
     const id: any = localStorage.getItem('value')
     const carrito: Carrito = {
@@ -80,8 +85,14 @@ export class DetalleProductoComponent {
       cantidad: producto.cantidad
     }
 
+
+
     this.carritoService.addCarrito(carrito).subscribe({
       next: (v) => {
+        if(event == "comprar"){
+          this.router.navigate(['/carrito'])
+          return;
+        }
         this.toastr.success("El producto se ha agregado correctamente en el carrito");
 
       },
@@ -95,6 +106,11 @@ export class DetalleProductoComponent {
 
       }
     });
+  }
+
+  comprarAhora(producto: Producto){
+    this.addCarrito('comprar',producto);
+
   }
 
   openDialog(): void {

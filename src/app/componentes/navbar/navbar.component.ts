@@ -29,6 +29,7 @@ export class NavbarComponent {
 
   navegar(seccion: string) {
     this.sesioniniciada = this.sesionService.sesionIniciada();
+
     if (seccion) {
       switch (seccion) {
         case 'carrito':
@@ -55,6 +56,7 @@ export class NavbarComponent {
     localStorage.removeItem("token");
     localStorage.removeItem("value");
     this.router.navigate(['/tienda']);
+    window.location.reload();
 
   }
 
