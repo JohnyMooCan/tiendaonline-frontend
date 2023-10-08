@@ -30,11 +30,11 @@ export class RegistrarseComponent {
       this.toastr.error("Todos los campos son obligatorios.", "Error");
       return;
     }
-
-    const re = new RegExp('^(\\d).{8,}$');
+    //^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$
+    const re = new RegExp('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$');//'^(\\d).{8,}$');
    
     if(!re.test(this.password)){
-      this.toastr.warning("La contraseña debe contener mínimo 8 carácteres y un número.", "Aviso");
+      this.toastr.warning("La contraseña debe contener mínimo ocho carácteres, al menos una letra y un número.", "Aviso");
       return;
     }
 

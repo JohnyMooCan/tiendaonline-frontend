@@ -40,13 +40,16 @@ export class DetalleProductoComponent {
 
 
   }
-  ngOnInit() {
+  ngOnInit(){
+    setTimeout(() => {
+  
+    }, 1000);
     this.obtenDetalle()
 
   }
 
   async obtenDetalle() {
-
+    this.mostrarSpinner = true;
     const id = this.route.snapshot.paramMap.get('id')!;
 
     await this.productoServide.getProducto(id).subscribe({

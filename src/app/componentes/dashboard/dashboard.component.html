@@ -13,14 +13,17 @@
         </div>
         <p class="text-body-secondary text-cuantos"> {{ cadenacuantosobtenidos }} </p>
         <div class="container" *ngIf="!mostrarSpinner">
-          <div class="row row-cols-3">
+          <div class="row  row-cols-lg-3 row-cols-md-3 row-cols-sm-2 rol-cols-xs-2">
             <div class="col" *ngFor="let producto of productos">
               <article class="mb-3 product" (click)="verDetalle(producto)">
                 <div class="product-body text-center">
                   <img [src]="producto.imagen" class="img-producto img-fluid" />
+                    
 
                   <h5 class="fw-bold">{{ producto.nombre }}</h5>
                   <p class="fw-bold" style="margin-bottom: 5px !important;">{{ producto.precio | currency }}</p>
+                  <i class="fa fa-shopping-cart fa-lg" title="Agregar al carrito"
+                  role="button" (click)="addCarrito($event,producto);$event.stopPropagation()"></i>
                 </div>
                 <div class="row text-center align-self-center align-items-center">
                   <app-calificacion [calificacion]="producto.calificacion"></app-calificacion>

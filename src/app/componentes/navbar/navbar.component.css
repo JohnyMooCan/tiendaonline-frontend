@@ -1,0 +1,22 @@
+.navbar-right {
+    float: right !important;
+}
+.nav.navbar-nav.navbar-right ul {
+    float: right !important;
+}
+.nav.navbar-nav.navbar-right li {
+    float: left !important;
+}
+.navbar-toggle {
+    float: left !important;
+}
+@media all and (max-width:767px) {
+    .navbar-header {
+        float: left !important;
+    }
+    
+    .navbar-collapse {
+        clear: both;
+        float: none;
+    }
+}

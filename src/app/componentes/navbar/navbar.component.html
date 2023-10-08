@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark  ">
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark  ">
   <a class="navbar-brand"  role="button" title="Ir a la tienda" (click)="navegar('tienda')">Mi tienda
     online</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -22,17 +22,21 @@
       </ul>
       <ng-template [ngIf]="sesioniniciada" [ngIfElse]="templatelogin">
         <ul class="navbar-nav d-flex flex-row me-1">
-          <li class="nav-item "><a class="nav-link text-white" role="button" title="Ir mis compras"
-              (click)="navegar('compras')">Mis compras</a>
-          </li>
-          <ul class="navbar-nav d-flex flex-row me-1"></ul>
           <li class="nav-item ">
-            <a class="nav-link text-white" title="Ir al carrito" (click)="navegar('carrito')"><i
-                class="fas fa-shopping-cart fa-md"
+            <a class="nav-link text-white" title="Ir al carrito" (click)="navegar('carrito')">
+              <i
+                class="fa fa-shopping-cart fa-md"
                 role="button"></i>
             </a>
           </li>
+          </ul>
+        <ul class="navbar-nav d-flex flex-row me-1">
+          <li class="nav-item "><a class="nav-link text-white" role="button" title="Ir mis compras"
+              (click)="navegar('compras')">Mis compras</a>
+          </li>
+          
         </ul>
+       
         <ul class="navbar-nav d-flex flex-row me-1">
           <li class="nab-item">
             <button class="btn btn-outline-light" (click)="navegar('cerrar')" title="Cerrar sesión" type="button">Cerrar

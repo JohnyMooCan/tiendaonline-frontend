@@ -42,24 +42,31 @@ export class DashboardComponent {
     this.busquedaGeneral = busqueda;
     this.getProductos();
  }
-  getProductos() {
+  async getProductos() {
     this.mostrarSpinner = true;
     //Obtenemos los productos
     const busqueda = (this.busquedaGeneral.length !== 0) ? {
       busqueda : this.busquedaGeneral
     } : undefined
    
-    this.productoService.getProductos(busqueda).subscribe(data => {
+    const prodi = await this.productoService.getProductos(busqueda).subscribe(data => {
       console.log(data);
-      this.productos = data; 
+      this.productos = data;
 
       this.productos.map(item => {
-        item.cantidad =1;
-      })
+        item.cantidad = 1;
+      });
       this.mostrarleyendacuantos = true;
-      this.cadenacuantosobtenidos = "Resultados obtenidos: " + data.length + " con la busqueda " + this.busquedaGeneral 
+      this.cadenacuantosobtenidos = "Resultados obtenidos: " + data.length + " con la busqueda " + this.busquedaGeneral;
       this.mostrarSpinner = false;
-    })/*{
+    }) /*{
+  next: (data) => {
+      console.log(data);
+  },
+  error: (e: HttpErrorResponse) => {
+    console.log(e.error);
+  }
+})*//*{
       next: (data) => {
           console.log(data);
       },
@@ -70,7 +77,7 @@ export class DashboardComponent {
       
   }
   addCarrito(event: any,producto: Producto) {
-   
+    producto.cantidad = 1;
     const id: any = localStorage.getItem('value')
     const carrito: Carrito = {
       idUsuario: parseInt(id),

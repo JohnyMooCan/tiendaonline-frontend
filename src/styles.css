@@ -21,7 +21,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding-top: 30px;
     padding-bottom: 10px;
 }
-
+.fa-shopping-cart:hover{
+   
+    color:#FFD600 ;
+    
+}
 
 /*Informacion de apoyo para tenerlo a la mano
 /*Extra Small Devices (Phones)*/
